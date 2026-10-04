@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OmniStore — Premium Online Store Template</title>
+  <link rel="stylesheet" href="web.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">
+      <span>Omni<b>Store</b></span>
+    </div>
+    <div class="nav-right">
+      <input type="text" id="searchInput" placeholder="Search products..." class="search-input">
+      <button class="cart-trigger" id="cartToggleBtn" aria-label="Cart">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span class="cart-badge" id="cartBadge">0</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Store Layout -->
+  <main class="app-container">
+    <header class="hero-header">
+      <span class="badge-pill">🔥 Featured Collection</span>
+      <h1>Discover Quality Products</h1>
+      <p>Browse our curated collection with instant checkout and fast delivery options.</p>
+    </header>
+
+    <!-- Category Filters -->
+    <section class="category-section">
+      <div class="category-bar" id="categoryBar">
+        <button class="cat-btn active" onclick="filterCategory('all', this)">All Items</button>
+        <button class="cat-btn" onclick="filterCategory('electronics', this)">Electronics</button>
+        <button class="cat-btn" onclick="filterCategory('fashion', this)">Fashion</button>
+        <button class="cat-btn" onclick="filterCategory('lifestyle', this)">Lifestyle</button>
+      </div>
+    </section>
+
+    <!-- Product Grid -->
+    <section class="product-grid" id="productGrid"></section>
+  </main>
+
+  <!-- Cart Drawer -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h2>Your Shopping Cart</h2>
+      <button class="close-cart" id="cartCloseBtn">&times;</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+      <p class="empty-msg">Your cart is empty.</p>
+    </div>
+    <div class="cart-footer">
+      <div class="total-row">
+        <span>Subtotal:</span>
+        <span id="cartTotal">৳0</span>
+      </div>
+      <button class="checkout-btn" onclick="openCheckoutModal()">Proceed to Order</button>
+    </div>
+  </aside>
+
+  <!-- Order / Checkout Modal -->
+  <div class="modal-overlay" id="checkoutModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Complete Your Order</h3>
+        <button class="close-modal" onclick="closeCheckoutModal()">&times;</button>
+      </div>
+      <form id="orderForm" onsubmit="handleOrderSubmit(event)">
+        <div class="form-group">
+          <label for="custName">Full Name *</label>
+          <input type="text" id="custName" required placeholder="e.g. Tanvir Ahmed">
+        </div>
+        <div class="form-group">
+          <label for="custPhone">Phone Number *</label>
+          <input type="tel" id="custPhone" required placeholder="e.g. 01700000000">
+        </div>
+        <div class="form-group">
+          <label for="custAddress">Full Delivery Address *</label>
+          <textarea id="custAddress" required rows="3" placeholder="House/Street, Area, City"></textarea>
+        </div>
+        <button type="submit" class="submit-order-btn">Confirm Order via WhatsApp</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="web.js"></script>
+</body>
+</html>
