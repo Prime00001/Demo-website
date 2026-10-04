@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OmniStore — Admin Dashboard</title>
+  <link rel="stylesheet" href="admin.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav class="admin-nav">
+    <div class="logo">
+      <span>Omni<b>Admin</b></span>
+    </div>
+    <a href="web.html" target="_blank" class="view-store-btn">View Live Store ↗</a>
+  </nav>
+
+  <main class="admin-container">
+    
+    <!-- Settings Card: WhatsApp Number -->
+    <section class="admin-card">
+      <h2>Store Settings</h2>
+      <form id="settingsForm" onsubmit="saveSettings(event)">
+        <div class="form-group">
+          <label for="whatsappNum">WhatsApp Order Number (with Country Code, no + or spaces):</label>
+          <div class="inline-input">
+            <input type="text" id="whatsappNum" placeholder="e.g. 8801700000000" required>
+            <button type="submit" class="save-btn">Save Number</button>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <!-- Add Product Form -->
+    <section class="admin-card">
+      <h2>Add New Product</h2>
+      <form id="addProductForm" onsubmit="handleAddProduct(event)">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="prodName">Product Name *</label>
+            <input type="text" id="prodName" required placeholder="e.g. Wireless Mouse">
+          </div>
+          <div class="form-group">
+            <label for="prodCategory">Category *</label>
+            <select id="prodCategory" required>
+              <option value="electronics">Electronics</option>
+              <option value="fashion">Fashion</option>
+              <option value="lifestyle">Lifestyle</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="prodPrice">Price (৳) *</label>
+            <input type="number" id="prodPrice" required placeholder="e.g. 850">
+          </div>
+          <div class="form-group">
+            <label for="prodImage">Image URL *</label>
+            <input type="url" id="prodImage" required placeholder="https://example.com/image.jpg">
+          </div>
+        </div>
+        <div class="form-group" style="margin-top: 14px;">
+          <label for="prodDesc">Description *</label>
+          <textarea id="prodDesc" rows="3" required placeholder="Short product overview..."></textarea>
+        </div>
+        <button type="submit" class="add-prod-btn">+ Add Product to Store</button>
+      </form>
+    </section>
+
+    <!-- Manage Products Table -->
+    <section class="admin-card">
+      <h2>Manage Inventory (<span id="totalProdCount">0</span>)</h2>
+      <div class="table-wrapper">
+        <table class="product-table">
+          <thead>
+            <tr>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="adminProductTable">
+            <!-- Dynamic rows will render here -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="admin.js"></script>
+</body>
+</html>
